@@ -1,11 +1,10 @@
 import React from 'react'
+import Landing from './Pages/Landing'
 
 const App = () => {
   return (
     <div>
-       <h1 class="text-3xl font-bold underline bg-red-300">
-            Hello world!
-      </h1>
+      <Landing/>
     </div>
   )
 }
