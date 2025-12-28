@@ -5,8 +5,10 @@ const RoleSelection = () => {
   const navigate = useNavigate();
 
   const handleRoleSelect = (role) => {
-    console.log("Selected Role:", role);
-    navigate("/workspace");
+    localStorage.setItem("role", role);
+navigate("/workspace/setup", { state: { role } });
+
+
   };
 
   return (
