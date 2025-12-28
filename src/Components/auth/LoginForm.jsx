@@ -18,7 +18,7 @@ const LoginForm = ({ onSwitch }) => {
           className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-pink-500"
         />
 
-        <button className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium">
+        <button className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600  hover:to-purple-600 text-white font-medium">
           Login
         </button>
       </form>
@@ -27,7 +27,7 @@ const LoginForm = ({ onSwitch }) => {
         Don’t have an account?{" "}
         <button
           onClick={onSwitch}
-          className="text-purple-600 font-medium"
+          className="text-purple-600 font-medium hover:text-pink-600"
         >
           Sign up
         </button>
