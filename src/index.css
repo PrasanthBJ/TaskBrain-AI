@@ -3,6 +3,11 @@
 
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 @theme {
   --font-primary: Inter, system-ui, sans-serif;
   --font-display: "Bebas Neue", sans-serif;
@@ -19,3 +24,4 @@
     font-family: var(--font-display);
   }
 }
+

@@ -2,7 +2,7 @@ import { ClipboardList, BarChart3, Clock, Video, LayoutDashboard, GraduationCap 
 
 const Features = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-pink-50">
+    <section id="features" className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-pink-50">
       <div className="max-w-6xl mx-auto text-center">
 
         {/* Heading */}

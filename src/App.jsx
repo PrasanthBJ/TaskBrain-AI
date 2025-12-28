@@ -1,12 +1,17 @@
-import React from 'react'
-import Landing from './Pages/Landing'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const App = () => {
+import Landing from "./Pages/Landing";
+import Auth from "./Pages/Auth";
+
+function App() {
   return (
-    <div>
-      <Landing/>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

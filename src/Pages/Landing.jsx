@@ -12,11 +12,13 @@ const Landing = () => {
   return (
     <div className='min-h-screen bg-white'>
     <Navbar/>
-    <Hero/>
-    <Features/>
-    <HowItWorks/>
-    <FAQ/>
-    <Footer/>
+    <main className="pt-24">
+    <Hero />
+    <Features />
+    <HowItWorks />
+    <FAQ />
+    <Footer />
+  </main>
     </div>
   )
 }

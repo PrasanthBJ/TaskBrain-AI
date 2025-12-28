@@ -9,7 +9,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-pink-50 via-white to-purple-50">
+    <section id="faq" className="py-20 px-6 bg-gradient-to-br from-pink-50 via-white to-purple-50">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4">
           Frequently Asked <span className="text-pink-600">Questions</span>

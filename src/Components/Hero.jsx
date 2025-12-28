@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
+
 const Hero = () => {
+
+  const navigate = useNavigate();
+
   return (
-    <section  className="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-6
-bg-gradient-to-br from-pink-50 via-white to-purple-50">
+    <section id="home" className="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-pink-50 via-white to-purple-50">
 
       {/* Title */}
       <h1 className="font-display text-7xl md:text-8xl tracking-widest">TASK
@@ -16,7 +21,8 @@ bg-gradient-to-br from-pink-50 via-white to-purple-50">
 
       {/* CTA Buttons */}
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
-        <button className="px-8 py-4 rounded-full text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 transition-all duration-300 shadow-lg">
+        <button onClick={() => navigate("/auth")} 
+        className="px-8 py-4 rounded-full text-white font-medium bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 transition-all duration-300 shadow-lg">
           Get Started Free
         </button>
 
