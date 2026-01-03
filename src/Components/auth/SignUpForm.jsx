@@ -1,11 +1,31 @@
+import { useState } from "react";
+import RoleSelector from "../../Components/RoleSelector";
+
+
 const SignupForm = ({ onSwitch }) => {
+  const [role, setRole] = useState("");
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+
+    if (!role) {
+      alert("Please select a role");
+      return;
+    }
+
+    // TEMP: store role (later backend will handle this)
+    localStorage.setItem("role", role);
+
+    console.log("Signing up with role:", role);
+  };
+
   return (
     <>
       <h2 className="text-3xl font-bold text-center mb-6">
         Create your account
       </h2>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSignup}>
         <input
           type="text"
           placeholder="Full name"
@@ -24,7 +44,15 @@ const SignupForm = ({ onSwitch }) => {
           className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-pink-500"
         />
 
-        <button className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600  hover:to-purple-600 font-medium">
+        {/* 🔥 ROLE SELECTION */}
+        <RoleSelector role={role} setRole={setRole} />
+
+        <button
+          type="submit"
+          className="w-full py-3 rounded-lg bg-gradient-to-r
+            from-pink-500 to-purple-500 text-white
+            hover:from-pink-600 hover:to-purple-600 font-medium"
+        >
           Sign Up
         </button>
       </form>

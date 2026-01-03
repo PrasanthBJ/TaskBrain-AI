@@ -5,6 +5,7 @@ import Auth from "./Pages/Auth";
 import RoleSelection from "./Pages/RoleSelection";
 import WorkspaceSetup from "./Pages/WorkspaceSetup";
 import WorkspaceDashboard from "./Pages/WorkspaceDashboard";
+import Tasks from "./Pages/Tasks";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/role" element={<RoleSelection />}/>
         <Route path="/workspace/setup" element={<WorkspaceSetup />} />
         <Route path="/workspace/:id" element={<WorkspaceDashboard />} />
+        <Route path="/workspace/:id/tasks" element={<Tasks />} />
+
 
       </Routes>
     </BrowserRouter>
