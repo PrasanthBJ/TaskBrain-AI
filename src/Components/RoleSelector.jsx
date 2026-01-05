@@ -1,26 +1,38 @@
 const RoleSelector = ({ role, setRole }) => {
   return (
-    <div className="space-y-2">
-      <label className="text-sm font-medium text-gray-700">
+    <div>
+      <p className="text-sm font-medium text-gray-700 mb-2">
         Select your role
-      </label>
+      </p>
 
-      <div className="grid grid-cols-3 gap-3">
-        {["MANAGER", "STUDENT", "TEAM_MEMBER"].map((r) => (
-          <button
-            key={r}
-            type="button"
-            onClick={() => setRole(r)}
-            className={`py-2 rounded-lg border text-sm font-medium
-              ${
-                role === r
-                  ? "bg-gradient-to-r from-pink-500 to-purple-500 text-white"
-                  : "bg-white hover:bg-gray-50"
-              }`}
-          >
-            {r.replace("_", " ")}
-          </button>
-        ))}
+      <div className="grid grid-cols-2 gap-4">
+        <button
+          type="button"
+          onClick={() => setRole("Manager")}
+          className={`
+            py-3 rounded-lg border font-medium text-center
+            transition-all
+            ${role === "Manager"
+              ? "bg-pink-500 text-white border-pink-500"
+              : "bg-white text-gray-700 border-gray-300 hover:border-pink-400"}
+          `}
+        >
+          Manager
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setRole("Student")}
+          className={`
+            py-3 rounded-lg border font-medium text-center
+            transition-all
+            ${role === "Student"
+              ? "bg-pink-500 text-white border-pink-500"
+              : "bg-white text-gray-700 border-gray-300 hover:border-pink-400"}
+          `}
+        >
+          Student
+        </button>
       </div>
     </div>
   );

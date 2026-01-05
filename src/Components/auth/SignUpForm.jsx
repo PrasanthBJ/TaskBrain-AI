@@ -1,23 +1,42 @@
 import { useState } from "react";
 import RoleSelector from "../../Components/RoleSelector";
+import { useNavigate } from "react-router-dom";
 
 
 const SignupForm = ({ onSwitch }) => {
+
+  const navigate = useNavigate();
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
   const handleSignup = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!role) {
-      alert("Please select a role");
-      return;
-    }
+  if (!fullName || !email || !password || !role) {
+    alert("All fields are required");
+    return;
+  }
 
-    // TEMP: store role (later backend will handle this)
-    localStorage.setItem("role", role);
+  localStorage.setItem("role", role);
 
-    console.log("Signing up with role:", role);
-  };
+  console.log("Signup Data:", {
+    fullName,
+    email,
+    password,
+    role,
+  });
+
+  // ✅ REDIRECT TO DASHBOARD
+  if (role === "Manager") {
+    navigate("/dashboard/manager");
+  } else if (role === "Student") {
+    navigate("/dashboard/student");
+  }
+};
+
 
   return (
     <>
@@ -29,22 +48,31 @@ const SignupForm = ({ onSwitch }) => {
         <input
           type="text"
           placeholder="Full name"
+          required
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
           className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-pink-500"
         />
 
         <input
           type="email"
           placeholder="Email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-pink-500"
         />
 
         <input
           type="password"
           placeholder="Password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-pink-500"
         />
 
-        {/* 🔥 ROLE SELECTION */}
+        {/* ROLE SELECTION */}
         <RoleSelector role={role} setRole={setRole} />
 
         <button
