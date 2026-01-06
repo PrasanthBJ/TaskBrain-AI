@@ -1,96 +1,110 @@
-import { useState } from "react";
-import DashboardLayout from "../../layouts/DashBoardLayout";
-import CreateUserModal from "../../Components/CreateUserModel";
+import {
+    Users,
+    Code,
+    Bug,
+    ArrowUpRight,
+    UserPlus,
+} from "lucide-react";
+
+const StatCard = ({ title, value, icon: Icon, accent }) => {
+    return (
+        <div className="bg-white rounded-xl border p-5 flex items-center justify-between hover:shadow-md transition-all">
+            <div>
+                <p className="text-sm text-gray-500">{title}</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">
+                    {value}
+                </p>
+            </div>
+
+            <div
+                className={`p-3 rounded-lg ${accent} bg-opacity-15`}
+            >
+                <Icon className={`w-6 h-6 ${accent.replace("bg", "text")}`} />
+            </div>
+        </div>
+    );
+};
 
 const ManagerDashboard = () => {
-  const [showModal, setShowModal] = useState(false);
+    return (
+        <div className="space-y-8">
+            {/* HEADER */}
+            <div className="flex items-center justify-between">
+                <div>
+                    <h2 className="text-xl md:text-2xl font-semibold text-gray-800">
+                        Manager Overview
+                    </h2>
+                    <p className="text-sm text-gray-500 mt-1">
+                        Monitor your team and manage roles efficiently
+                    </p>
+                </div>
 
-  // ✅ START EMPTY
-  const users = [];
-
-  return (
-    <DashboardLayout>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h2 className="text-3xl font-bold text-gray-800">
-            User Management
-          </h2>
-          <p className="text-gray-500 mt-1">
-            Manage employees and assign roles
-          </p>
-        </div>
-
-        <button
-          onClick={() => setShowModal(true)}
-          className="
-            px-6 py-3 rounded-xl
-            font-semibold text-white
-            bg-gradient-to-r from-pink-500 to-purple-500
-            hover:from-pink-600 hover:to-purple-600
+                <button
+                    className="
+            flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+            bg-gradient-to-r from-pink-500 to-violet-500
+            text-white hover:from-pink-600 hover:to-violet-600
             transition-all
           "
-        >
-          + Create User
-        </button>
-      </div>
+                >
+                    <UserPlus className="w-4 h-4" />
+                    Add Member
+                </button>
+            </div>
 
-      {/* EMPTY STATE */}
-      {users.length === 0 ? (
-        <div className="
-          flex flex-col items-center justify-center
-          bg-white/70 backdrop-blur-xl
-          rounded-2xl shadow-lg
-          py-20
-        ">
-          <div className="text-6xl mb-4">👥</div>
+            {/* STATS GRID */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <StatCard
+                    title="Total Members"
+                    value="3"
+                    icon={Users}
+                    accent="bg-pink-500"
+                />
 
-          <h3 className="text-xl font-bold text-gray-800 mb-2">
-            No users created yet
-          </h3>
+                <StatCard
+                    title="Developers"
+                    value="2"
+                    icon={Code}
+                    accent="bg-indigo-500"
+                />
 
-          <p className="text-gray-500 mb-6 text-center max-w-md">
-            Start by creating employees and assigning them roles
-            to manage tasks and meetings.
-          </p>
+                <StatCard
+                    title="Testers"
+                    value="1"
+                    icon={Bug}
+                    accent="bg-violet-500"
+                />
 
-          <button
-            onClick={() => setShowModal(true)}
-            className="
-              px-6 py-3 rounded-xl
-              font-semibold text-white
-              bg-gradient-to-r from-pink-500 to-purple-500
-              hover:from-pink-600 hover:to-purple-600
-              transition-all
-            "
-          >
-            Create Your First User
-          </button>
+                <StatCard
+                    title="Active Roles"
+                    value="3"
+                    icon={ArrowUpRight}
+                    accent="bg-emerald-500"
+                />
+            </div>
+
+            {/* INFO / GUIDANCE CARD */}
+            <div className="bg-white rounded-xl border p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h3 className="text-lg font-medium text-gray-800">
+                        Team Management
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1 max-w-xl">
+                        Use the User Management section to add new members, assign work
+                        roles like developer or tester, and manage your team efficiently.
+                    </p>
+                </div>
+
+                <a
+                    href="/dashboard/manager/users"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-pink-600 hover:text-pink-700"
+                >
+                    Go to User Management
+                    <ArrowUpRight className="w-4 h-4" />
+                </a>
+            </div>
         </div>
-      ) : (
-        /* USERS TABLE (future) */
-        <div className="bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr className="text-left text-sm text-gray-600 font-semibold">
-                <th className="p-4">Name</th>
-                <th className="p-4">Email</th>
-                <th className="p-4">Role</th>
-                <th className="p-4">Status</th>
-                <th className="p-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Will render when users exist */}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {/* Create User Modal */}
-      {showModal && <CreateUserModal onClose={() => setShowModal(false)} />}
-    </DashboardLayout>
-  );
+    );
 };
 
 export default ManagerDashboard;

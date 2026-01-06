@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AuthLayout from "../Components/auth/AuthLayout";
-import LoginForm from "../Components/auth/LoginForm";
-import SignupForm from "../Components/auth/SignUpForm";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
+import AuthLayout from "../../layouts/AuthLayout.jsx";
+import LoginForm from "./LoginForm.jsx";
+import SignupForm from "./SignUpForm.jsx";
+import Footer from "../../Components/Footer.jsx";
+import Navbar from "../../Components/navbar/Navbar.jsx";
 
 
 

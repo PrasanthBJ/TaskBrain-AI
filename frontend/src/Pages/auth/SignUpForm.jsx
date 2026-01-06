@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RoleSelector from "../../Components/RoleSelector";
+import RoleSelector from "./RoleSelector.jsx";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,30 +12,40 @@ const SignupForm = ({ onSwitch }) => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const handleSignup = (e) => {
-  e.preventDefault();
+    const handleSignup = (e) => {
+        e.preventDefault();
 
-  if (!fullName || !email || !password || !role) {
-    alert("All fields are required");
-    return;
-  }
+        // STEP 1: BASIC VALIDATION
+        if (!fullName || !email || !password || !role) {
+            alert("All fields are required");
+            return;
+        }
 
-  localStorage.setItem("role", role);
+        // STEP 1: VERIFICATION LOG
+        console.log("STEP 1: Signup Data Captured ✅", {
+            fullName,
+            email,
+            password,
+            role,
+        });
 
-  console.log("Signup Data:", {
-    fullName,
-    email,
-    password,
-    role,
-  });
+        // STEP 2: TEMP AUTH STORAGE
+        localStorage.setItem("role", role.toLowerCase());
+        localStorage.setItem("isAuthenticated", "true");
 
-  // ✅ REDIRECT TO DASHBOARD
-  if (role === "Manager") {
-    navigate("/dashboard/manager");
-  } else if (role === "Student") {
-    navigate("/dashboard/student");
-  }
-};
+        console.log("STEP 2: Auth Data Stored ✅", {
+            role: localStorage.getItem("role"),
+            isAuthenticated: localStorage.getItem("isAuthenticated"),
+        });
+
+        // STEP 3: ROLE-BASED REDIRECT
+        if (role === "manager") {
+            navigate("/dashboard/manager");
+        } else if (role === "student") {
+            navigate("/dashboard/student");
+        }
+    };
+
 
 
   return (
